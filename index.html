@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2k24Mirror</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/000/498/032/original/vector-pen-icon-design.jpg" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .background-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.webp') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0078D4;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #0056a3;
+            margin: 20px 0 10px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question label {
+            display: block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .question textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .question textarea:focus {
+            border-color: #0078D4;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 120, 212, 0.5);
+            background: #ffffff;
+        }
+
+        .save-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #0078D4;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .save-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .send-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-decor"></div>
+    <div class="container">
+        <h1>2k24Mirror</h1>
+        <form id="questions-form">
+            <div class="section-title">1. Highlights of 2024</div>
+            <div class="question">
+                <label for="q1">Q1: What’s the best thing I’ve done this year that you think I should continue in 2025?</label>
+                <textarea id="q1"></textarea>
+            </div>
+            <div class="question">
+                <label for="q2">Q2: What’s the funniest or most memorable moment we’ve shared in 2024?</label>
+                <textarea id="q2"></textarea>
+            </div>
+            <div class="section-title">2. Room for Improvement</div>
+            <div class="question">
+                <label for="q3">Q3: What’s something I’ve done this year that you didn’t like, and how can I change it?</label>
+                <textarea id="q3"></textarea>
+            </div>
+            <div class="question">
+                <label for="q4">Q4: What do you think I can do to be a better friend in 2025?</label>
+                <textarea id="q4"></textarea>
+            </div>
+            <div class="section-title">3. Our Bond</div>
+            <div class="question">
+                <label for="q5">Q5: What’s one thing you’ve learned from me this year that surprised or inspired you?</label>
+                <textarea id="q5"></textarea>
+            </div>
+            <div class="question">
+                <label for="q6">Q6: If our friendship were a movie, what would the title of our 2024 story be?</label>
+                <textarea id="q6"></textarea>
+            </div>
+            <div class="section-title">4. The Dream Team</div>
+            <div class="question">
+                <label for="q7">Q7: If we had to plan a crazy adventure in 2025, what would it be and why?</label>
+                <textarea id="q7"></textarea>
+            </div>
+            <div class="question">
+                <label for="q8">Q8: What’s one goal we should achieve together next year?</label>
+                <textarea id="q8"></textarea>
+            </div>
+            <div class="section-title">5. Cherishing the Connection</div>
+            <div class="question">
+                <label for="q9">Q9: What’s one thing about me that you admire but haven’t told me before?</label>
+                <textarea id="q9"></textarea>
+            </div>
+            <div class="question">
+                <label for="q10">Q10: If you could describe me in three words, what would they be and why?</label>
+                <textarea id="q10"></textarea>
+            </div>
+            <div class="section-title">6. Wildcard</div>
+            <div class="question">
+                <label for="q11">Q11: If I were to change one habit or personality trait next year, what would you suggest?</label>
+                <textarea id="q11"></textarea>
+            </div>
+            <div class="question">
+                <label for="q12">Q12: What’s something you wish I’d do more of with you in 2025?</label>
+                <textarea id="q12"></textarea>
+            </div>
+            <button type="button" class="save-btn" onclick="saveAsPDF()">Save as PDF</button>
+        </form>
+        <div class="send-note">Send the PDF to me</div>
+        <footer>&copy; 2024 - Your Friendship Reflection</footer>
+    </div>
+
+    <script>
+        function saveAsPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const questions = document.querySelectorAll('.question');
+            let y = 10;
+
+            questions.forEach((q, index) => {
+                const label = q.querySelector('label').textContent;
+                const answer = q.querySelector('textarea').value;
+
+                doc.text(`${index + 1}. ${label}`, 10, y);
+                y += 10;
+
+                doc.text(`Answer: ${answer}`, 10, y);
+                y += 20;
+
+                if (y > 270) {
+                    doc.addPage();
+                    y = 10;
+                }
+            });
+
+            doc.text('Send the PDF to me', 10, y + 10);
+            doc.save('Your_2024_Mirror.pdf');
+
+            alert("Your PDF has been saved! Now you should send this to me.");
+        }
+    </script>
+</body>
+</html>
